@@ -1,0 +1,35 @@
+.teamsContainer {
+    margin-top:40px;
+    margin-bottom:30px;
+    width:100%;
+    display:flex;
+}
+.teamsLabel {
+    height:100%;
+    width:25%;
+    padding-right:50px;
+    color:#C1C1C1;
+    font-weight:600;
+    font-family:sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+}
+.teamsRemaining {
+    margin-top:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:16px;
+    font-family:sans-serif;
+    color:#606060;
+}
+@media (max-width:768px) {
+    .teamsWrapper {
+        width:90%;
+        margin-left:5%;
+    }
+    .teamsLabel {
+        display:none;
+    }
+}

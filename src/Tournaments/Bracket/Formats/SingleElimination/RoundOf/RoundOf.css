@@ -1,0 +1,24 @@
+.roundOfWrapperSingle {
+    padding-top:80px;
+    display:flex;
+    flex-direction:column;
+    user-select:none;
+}
+.roundOfSingle {
+    color:white;
+    font-family:sans-serif;
+    font-size:36px;
+    font-weight:700;
+    user-select:none;
+}
+.bestOfSingle {    
+    color:white;
+    font-family: sans-serif;
+    font-size:16px;
+    padding-bottom:30px;
+    user-select:none;
+}
+.singleEliminationTCardWrapper {
+    display:flex;
+    flex-direction:column;
+}

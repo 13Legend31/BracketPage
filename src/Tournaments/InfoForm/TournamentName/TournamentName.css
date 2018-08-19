@@ -1,0 +1,41 @@
+.nameContainer {
+    height:40px;
+    width:100%;
+    display:flex;
+}
+.tournamentName {
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding-right:50px;
+    width:25%;
+    color:#C1C1C1;
+    font-weight:600;
+    font-family:sans-serif;
+}
+.nameInput {
+    width:700px;
+    box-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;
+    background:#121216;
+    color:white;
+    transition:0.3s;
+    padding-left:15px;
+    font-size:16px;
+    overflow:visible;
+    box-sizing: border-box;
+}
+.nameInput:hover {
+    box-shadow: 2px 2px 2px orange, -2px -2px 2px orange, 2px -2px 2px orange, -2px 2px 2px orange;
+}
+.nameInput:focus {
+    box-shadow: 3px 3px 3px orangered, -3px -3px 3px orangered, 3px -3px 3px orangered, -3px 3px 3px orangered;
+}
+@media (max-width:768px) {
+    .tournamentName {
+        display:none;
+    }
+    .nameInput {
+        margin-left:5%;
+        width:90%;
+    }
+}

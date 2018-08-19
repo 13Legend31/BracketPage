@@ -1,0 +1,34 @@
+.bestOfRoundRobin {
+    position:relative;
+    width:100%;
+    margin-top:25px;
+}
+.bestOfRoundRobinName {
+    display:flex;
+    justify-content: flex-end;
+    color:white;
+    font-family:sans-serif;
+    margin-bottom:10px;
+}
+.bestOfRoundRobinHeader {
+    flex:5;
+    color:white;
+    font-size:16px;
+    font-family:sans-serif;
+    display:flex;
+    align-items:center;
+}
+.bestOfRoundRobinInput {
+    position:absolute;
+    right:0;
+    color:white;
+    background:#121216;
+    box-sizing:border-box;
+    border:1px solid black;
+    font-size:16px;
+    width:50px;
+    display:flex;
+    justify-content: center;
+    margin-left: 10px;
+    padding-left:7px;
+}

@@ -1,0 +1,30 @@
+.roundRobinSections {
+    display:flex;
+}
+.roundRobinGoRight {
+    width: 0; 
+    height: 0; 
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid red;
+    border-top: 50px solid transparent;
+    background:transparent;
+    cursor:pointer;
+    transition:border 0.5s;
+}
+.roundRobinGoRight:hover {
+    border-left: 50px solid orange;
+}
+.roundRobinGoLeft {
+    margin-right:100px;
+    width: 0; 
+    height: 0; 
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid red;
+    border-top: 50px solid transparent;
+    background:transparent;
+    cursor:pointer;
+    transition:0.5s;
+}
+.roundRobinGoLeft:hover {
+    border-right: 50px solid orange;
+}

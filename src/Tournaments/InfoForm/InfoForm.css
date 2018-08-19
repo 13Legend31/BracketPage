@@ -1,0 +1,20 @@
+.infoForm {
+    min-width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+.easyBracket {
+    margin-top:80px;
+    margin-bottom:40px;
+    padding-left:20%;
+    color:white;
+    font-size:62px;
+    font-family:sans-serif;
+    font-weight:600;
+}
+@media (max-width:768px) {
+    .easyBracket {
+        padding:0;
+    }
+}

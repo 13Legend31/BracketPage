@@ -1,0 +1,33 @@
+.scoreBoardRow {
+    display:flex;
+    margin-bottom:7px;
+    border-bottom:1px solid grey;
+    width:100%;
+}
+.rowTeamName {
+    color:white;
+    font-size:20px;
+    font-family:sans-serif;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    width:270px;
+}
+.rowWin {
+    margin-left:100px;
+    color:chartreuse;
+    font-size:16px;
+    font-family:sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.rowLoss {
+    margin-left:100px;
+    color:red;
+    font-size:16px;
+    font-family:sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

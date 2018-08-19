@@ -1,0 +1,32 @@
+.teamNameChanger {
+    margin-top:5px;
+    display:flex;
+    box-sizing:border-box;
+    border:1px solid black;
+}
+.teamNum {
+    font-size:16;
+    font-family:sans-serif;
+    padding:5px;
+    padding-right:10px;
+}
+.teamInput {
+    width:400px;
+    font-size:16;
+    font-family:sans-serif;
+    padding-left:10px;
+    background:#231E1E;
+    color:white;
+}
+.teamInput::placeholder {
+    color:red;
+    opacity:0.4;
+}
+@media (max-width:768px) {
+    .teamNameChanger {
+        width:100%;
+    }
+    .teamInput {
+        width:100%;
+    }
+}

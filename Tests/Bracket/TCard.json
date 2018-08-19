@@ -1,0 +1,34 @@
+{
+    "1": {
+        "Input":" num <= 0 < bestOf",
+        "Output":"num"
+    },
+    "2": {
+        "Input":"num < 0",
+        "Output":"num <= 0 <= bestOf"
+    },
+    "3": {
+        "Input":"num > bestOf",
+        "Output":"bestOf, orange background"
+    },
+    "4": {
+        "Input":"NaN",
+        "Output":"0"
+    },
+    "5": {
+        "Input":"winner && other num >= bestOf",
+        "Output":"bestOf - 1"
+    },
+    "6": {
+        "Input":"winner && other num <= 0 < bestOf",
+        "Output":"num"
+    },
+    "7": {
+        "Input":"",
+        "Output":"0"
+    },
+    "8": {
+        "Input":"any num, 1 or 2 teams are empty string",
+        "Output": "0"
+    }
+}

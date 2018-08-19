@@ -1,0 +1,34 @@
+{
+    "1": {
+        "Input":"1 <= num <= 9",
+        "Output":"num"
+    },
+    "2": {
+        "Input":"num < 1",
+        "Output":"1"
+    },
+    "3": {
+        "Input":"num > 9",
+        "Output":"9"
+    },
+    "4": {
+        "Input":"NaN",
+        "Output":"1"
+    },
+    "5": {
+        "Input":"focus, NaN",
+        "Output":""
+    },
+    "6": {
+        "Input":"focus, 1 <= num <= 9",
+        "Output":"num"
+    },
+    "7": {
+        "Input":"focus, num < 1",
+        "Output":"1"
+    },
+    "8": {
+        "Input":"focus, num > 9",
+        "Output":"9"
+    }
+}

@@ -1,0 +1,20 @@
+.roundRobin {
+    display:flex;
+    flex-direction:column;
+}
+.scoreBoardWrapper {
+    display:flex;
+}
+.scoreBoardName { 
+    color:white;
+    font-size:72px;
+    font-family:sans-serif;
+    margin-bottom:15px;
+    transition:0.5s;
+}
+.toggleScoreBoard {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    background:transparent;
+    cursor:pointer;
+}

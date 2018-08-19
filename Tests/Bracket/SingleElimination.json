@@ -1,0 +1,22 @@
+{
+    "1": {
+        "Input":"score = bestOf",
+        "Output":"winner should be moved up"
+    },
+    "2": {
+        "Input":"score was bestOf, now less than bestOf",
+        "Output":"recursively wipe successive TCard"
+    },
+    "3" : {
+        "Input":"valid score, no winner",
+        "Output":"score should be updated"
+    },
+    "4": {
+        "Input":"!winner, score = bestOf",
+        "Output":"winner, advance winner"
+    },
+    "5": {
+        "Input":"winner = theTeam, score=bestOf",
+        "Output":""
+    }
+}

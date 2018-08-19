@@ -1,0 +1,18 @@
+{
+    "1": {
+        "Input":"teams have blanks",
+        "Output":"prompt"
+    },
+    "2": {
+        "Input":"teams no blank",
+        "Output":"to '/Bracket'"
+    },
+    "3": {
+        "Input":"randomize",
+        "Output":"teams get randomized"
+    },
+    "4": {
+        "Input":"clear",
+        "Output":"teams = ['',''], remaining = 254"
+    }
+}

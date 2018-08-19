@@ -1,0 +1,31 @@
+.bestOfRobin {
+    color:white;
+    font-family: sans-serif;
+    font-size:16px;
+    padding-bottom:30px;
+    user-select:none;
+}
+.roundOfWrapperRobin {
+    width:1200px;
+}
+.roundOfRobin {
+    color:white;
+    font-family:sans-serif;
+    font-size:36px;
+    font-weight:700;
+    user-select:none;
+}
+.bestOfRobin {
+    color:white;
+    font-family: sans-serif;
+    font-size:16px;
+    padding-bottom:30px;
+    user-select:none;
+}
+.roundRobinTCardWrapper {
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    max-width:200%;
+    flex-wrap:wrap;
+}
