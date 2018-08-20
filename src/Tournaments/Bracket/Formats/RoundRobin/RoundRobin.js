@@ -31,20 +31,27 @@ class RoundRobin extends Component {
     }
 
     ModifyScoreBoardRow = (winner, loser, wasThereAWinner) => {
-        const roundRobinScoreBoard = {...this.props.roundRobinScoreBoard}
-        const winnerRow = {...roundRobinScoreBoard[winner]}
-        const loserRow = {...roundRobinScoreBoard[loser]}
+        let scoreBoard = [...this.props.roundRobinScoreBoard]
+        let winnerInfo,
+            winnerIndex
 
-        if (wasThereAWinner) {
-            winnerRow.win++
-            loserRow.loss++
-        } else {
-            winnerRow.win--
-            loserRow.loss--
+        for (let i = 0; i < scoreBoard.length; i++) {
+            if (scoreBoard[i].name === winner) {
+                winnerInfo = {...scoreBoard[i]}
+                winnerInfo.win = wasThereAWinner ? winnerInfo.win + 1 : winnerInfo.win - 1
+                winnerIndex = i
+            } else if (scoreBoard[i].name === loser) {
+                scoreBoard[i].loss = wasThereAWinner ? scoreBoard[i].loss + 1 : scoreBoard[i].loss - 1 
+            }
         }
-        roundRobinScoreBoard[winner] = winnerRow
-        roundRobinScoreBoard[loser] = loserRow
-        this.props.UpdateScoreBoard(roundRobinScoreBoard)
+
+        scoreBoard.splice(winnerIndex, 1)
+        let i = 0
+        while (winnerInfo.win < scoreBoard[i].win && i < scoreBoard.length) {
+            i++
+        }
+        scoreBoard.splice(i, 0, winnerInfo)
+        this.props.UpdateScoreBoard(scoreBoard)
     }
 
     // DO NOT MODIFY SCORE WITH THIS FUNCTION

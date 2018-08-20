@@ -50,7 +50,7 @@ const store = createStore(
         singleEliminationData:[],
         bestOfSingle:[],
         roundRobinData:[],
-        roundRobinScoreBoard:{},
+        roundRobinScoreBoard:[],
         bestOfRoundRobin:[],
         links: {
             view: '',
