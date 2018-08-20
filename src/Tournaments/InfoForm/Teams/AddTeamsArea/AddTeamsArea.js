@@ -35,14 +35,14 @@ class AddTeamsArea extends Component {
         })
 
         // THIS IS ONLY FOR TESTING
-        const teams = {...this.props.teams}
+        /* const teams = {...this.props.teams}
         const teamsList = []
         for (let i = 0; i < 243; i++) {
             teamsList.push(`${i + 1}`)
         }
         teams.teamsList = teamsList
         teams.remaining = 256 - teamsList.length
-        this.props.UpdateTeams(teams)
+        this.props.UpdateTeams(teams) */
         //----------------------------
 
         this.inputs = document.getElementsByClassName('teamInput')

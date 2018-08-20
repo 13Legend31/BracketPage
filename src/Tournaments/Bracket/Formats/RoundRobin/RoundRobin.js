@@ -47,7 +47,7 @@ class RoundRobin extends Component {
 
         scoreBoard.splice(winnerIndex, 1)
         let i = 0
-        while (winnerInfo.win < scoreBoard[i].win && i < scoreBoard.length) {
+        while (i < scoreBoard.length && winnerInfo.win < scoreBoard[i].win) {
             i++
         }
         scoreBoard.splice(i, 0, winnerInfo)
