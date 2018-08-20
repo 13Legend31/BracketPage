@@ -82,7 +82,6 @@ class AddTeamsArea extends Component {
 
         // check if duplicates
         if (this.teamNames[name] && this.teamNames[name].size > 1) {
-            console.log(name)
             this.teamNames[name].forEach((val, key) => {
                 this.inputs[key].style.color = 'orange'
             })
@@ -104,7 +103,6 @@ class AddTeamsArea extends Component {
             }
         }
 
-        console.log(this.teamNames)
         this.previousName = name
         this.props.UpdateTeams(teams)
         this.props.IsBracketUpToDate(false)
