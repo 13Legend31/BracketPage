@@ -52,7 +52,8 @@ class Buttons extends Component {
         if (empty) {
             e.preventDefault()
             this.Prompt(blankTeam)
-        } else if (duplicate) {
+        } 
+        if (duplicate) {
             e.preventDefault()
             this.Prompt(duplicateTeam)
         }

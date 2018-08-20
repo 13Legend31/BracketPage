@@ -15,7 +15,7 @@
 }
 .duplicateTeam {
     display:none;
-    color:red;
+    color:orange;
     font-family:sans-serif;
     font-size:16px;
     margin-left:calc(25% + 50px);

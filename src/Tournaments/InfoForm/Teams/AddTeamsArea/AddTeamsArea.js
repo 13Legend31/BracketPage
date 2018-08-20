@@ -11,6 +11,10 @@ class AddTeamsArea extends Component {
         super(props)
         this.focus = 0
         this.inputs = [] // SET THIS IN COMPONENT DID MOUNT, CHANGE THIS IN ADD/REMOVE TEAMS
+
+        this.teamNames = {} // name: {index}
+        this.currentName = ''
+        this.previousName = ''
     }
 
     componentDidMount = () => {
@@ -30,24 +34,105 @@ class AddTeamsArea extends Component {
             }
         })
 
-        this.inputs = document.getElementsByClassName('teamInput')
         // THIS IS ONLY FOR TESTING
         /* const teams = {...this.props.teams}
         const teamsList = []
         for (let i = 0; i < 243; i++) {
-            teamsList.push(`${i + 1}`)
+            teamsList.push(`${1}`)
         }
         teams.teamsList = teamsList
         teams.remaining = 256 - teamsList.length
         this.props.UpdateTeams(teams) */
         //----------------------------
+
+        this.inputs = document.getElementsByClassName('teamInput')
+        for (let i = 0; i < this.inputs.length; i++) {
+            const name = this.inputs[i].value
+            if (!this.teamNames[name] && name !== '') {
+                this.teamNames[name] = new Map()
+            }
+            if (name !== '') {
+                this.teamNames[name].set(i, 1)
+            }
+        }
+        for (let name in this.teamNames) {
+            if (this.teamNames.hasOwnProperty(name) && this.teamNames[name].size > 1) {
+                this.teamNames[name].forEach((val, key) =>
+                    this.inputs[key].style.color = 'orange'
+                )
+            }
+        }
+    }
+
+    componentDidUpdate = () => {
+        this.inputs = document.getElementsByClassName('teamInput')
     }
 
     UpdateTeamName = (index, name) => {
         const teams = {...this.props.teams}
         teams.teamsList.splice(index, 1, name)
+
+        // insert name into table
+        if (!this.teamNames[name] && name !== '') {
+            this.teamNames[name] = new Map()
+        }
+        if (name !== '') {
+            this.teamNames[name].set(index, 1) // put index into the table
+        }
+
+        // check if duplicates
+        if (this.teamNames[name] && this.teamNames[name].size > 1) {
+            console.log(name)
+            this.teamNames[name].forEach((val, key) => {
+                this.inputs[key].style.color = 'orange'
+            })
+        } else {
+            this.inputs[index].style.color = 'white'
+        }
+
+        // delete previous name from table
+        const prev = this.teamNames[this.previousName]
+        if (prev) {
+            prev.delete(index)
+            if (prev.size === 1) {
+                prev.forEach((val, key) => {
+                    this.inputs[key].style.color = 'white'
+                })
+            }
+            else if (prev.size === 0) {
+                delete this.teamNames[this.previousName]
+            }
+        }
+
+        console.log(this.teamNames)
+        this.previousName = name
         this.props.UpdateTeams(teams)
         this.props.IsBracketUpToDate(false)
+    }
+
+    Shift(index, k) {
+        // we have to shift the style over too
+        for (let name in this.teamNames) {
+            if (this.teamNames.hasOwnProperty(name)) {
+                const map = new Map()
+                this.teamNames[name].forEach((val, key) => {
+                    if (key > index) {
+                        const pos = k > 0 ? key : key + k; 
+                        this.inputs[pos].style.color = 'white'
+                        map.set(key + k, 1)
+                    } else {
+                        map.set(key, 1)
+                    }
+                })
+                if (map.size > 1) {
+                    map.forEach((val, key) => {
+                        this.inputs[key].style.color = 'orange'
+                    })
+                }
+
+                this.teamNames[name] = map
+            }
+        }
     }
 
     AddTeam = (index) => {
@@ -58,6 +143,8 @@ class AddTeamsArea extends Component {
             this.props.UpdateTeams(teams)
             this.props.IsBracketUpToDate(false)
             this.ChangeFocus(index + 1)
+            // shift key >= index teamNames ++
+            this.Shift(index, 1)
         }        
     }
 
@@ -69,6 +156,8 @@ class AddTeamsArea extends Component {
             this.props.UpdateTeams(teams)
             this.props.IsBracketUpToDate(false)
             this.ChangeFocus(index - 1)
+            // shift key >= index teamNames --
+            this.Shift(index, -1)
         }
     }
 
@@ -80,11 +169,8 @@ class AddTeamsArea extends Component {
             index = 0
         }
         this.focus=index
-        this.inputs[index].focus()
-    }
-
-    componentDidUpdate = () => {
-        this.inputs = document.getElementsByClassName('teamInput')
+        this.inputs[index].focus()        
+        this.previousName = this.inputs[index].value
     }
 
     render() {
