@@ -11,7 +11,9 @@ class Links extends Component {
     }
 
     SendData = () => {
-        fetch('https://ezbracketapi.herokuapp.com', {
+        /* http://localhost:1337/ */
+        /* https://ezbracketapi.herokuapp.com/ */
+        fetch('https://ezbracketapi.herokuapp.com/', {
             method: 'POST',
             body: JSON.stringify(this.props.store),
             headers: {

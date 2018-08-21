@@ -39,7 +39,7 @@ class BestOfRoundRobin extends Component {
         if (isValueNumOrBlank) {
             if (value !== '') {
                 value = parseInt(value, 10)
-                value = value > 9 ? 9 : value
+                value = value > 99 ? 99 : value
                 value = value < 1 ? 1 : value
             }
             const bestOf = [...this.props.bestOf]

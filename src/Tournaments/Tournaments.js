@@ -20,6 +20,10 @@ class Tournaments extends Component {
     componentDidMount = () => {
         const location = this.props.history.location.pathname
         const path = location.replace(/\/Info|\/Bracket/i,'')
+
+
+        /* http://localhost:1337 */
+        /* https://ezbracketapi.herokuapp.com */
         if (path) {
             fetch(`https://ezbracketapi.herokuapp.com${path}`, {
                 method: 'POST',
