@@ -76,6 +76,7 @@ class TheBracket extends Component {
                     onMouseUp={this.MouseUp}
                     onMouseLeave={this.MouseUp}
                 >
+                    <h1 className='bracketTutorial'>Click On The Scores To Edit!</h1>
                     <div className='bracketTop'/>
                     <div className='bracketMid'>
                         <div className='bracketLeftSpace'/>

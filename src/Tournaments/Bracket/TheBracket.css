@@ -17,13 +17,18 @@
     flex-direction:column;
     width:35%;
 }
-.bracketMid {
-    display:flex;
-    min-width:100%;
+.bracketTutorial {
+    color:white;
+    font-family:sans-serif;
+    margin:30px;
 }
 .bracketTop {
     width:100%;
     height:10%;
+}
+.bracketMid {
+    display:flex;
+    min-width:100%;
 }
 .bracketBottom {
     width:100%;
