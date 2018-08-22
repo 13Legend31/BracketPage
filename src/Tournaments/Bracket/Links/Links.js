@@ -37,6 +37,10 @@ class Links extends Component {
         this.generate = document.getElementsByClassName('generateLinks')[0]
     }
 
+    Select = (e) => {
+        e.target.select()
+    }
+
     render() {
         const { view, edit } = this.props.store.links
         return (
@@ -44,7 +48,12 @@ class Links extends Component {
             {view &&
                 <div className='view'>
                     <div className='viewDescription'>View link</div>
-                    <div className='viewLink'>{view}</div>
+                    <input 
+                        className='viewLink' 
+                        value={view}
+                        readOnly={true}
+                        onClick={this.Select}
+                    />
                 </div>
             }
             {edit &&
@@ -52,7 +61,12 @@ class Links extends Component {
                     <div className='editDescription'>Edit Link:  
                         <span className='DONOTGIVETHISTOANYONE'>(BE CAREFUL SHARING THIS)</span>
                     </div>
-                    <div className='editLink'>{edit}</div>
+                    <input 
+                        className='editLink'
+                        value={edit}
+                        readOnly={true}
+                        onClick={this.Select}
+                    />
                 </div>
             }
                 <div 

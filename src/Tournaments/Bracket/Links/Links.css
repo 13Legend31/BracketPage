@@ -33,6 +33,7 @@
     font-size:14px;
 }
 .viewLink {
+    width:100%;
     box-sizing:border-box;
     border:1px solid white;
     background:black;
@@ -60,6 +61,7 @@
     font-weight:700;
 }
 .editLink {
+    width:100%;
     box-sizing:border-box;
     border:1px solid white;
     background:black;
