@@ -10,7 +10,7 @@ class InfoForm extends Component {
     render() {
         return (
             <section className='infoForm'>
-                <h1 className='easyBracket'>Easy Bracket</h1>
+                <h1 className='easyBracket'>Easy Brackets</h1>
                 <TournamentName/>
                 <TournamentFormat/>
                 <Teams/>
