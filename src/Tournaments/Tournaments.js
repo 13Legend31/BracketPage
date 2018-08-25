@@ -20,17 +20,10 @@ class Tournaments extends Component {
     componentDidMount = () => {
         const location = this.props.history.location.pathname
         const path = location.replace(/\/Info|\/Bracket/i,'')
-
-
-        /* http://localhost:1337 */
-        /* https://ezbracketapi.herokuapp.com */
+        /* http://localhost:1337/Bracket */
+        /* https://ezbracketapi.herokuapp.com/Bracket */
         if (path) {
-            fetch(`https://ezbracketapi.herokuapp.com${path}`, {
-                method: 'POST',
-                headers: {
-                    "Accept": "application/json"
-                }
-            })
+            fetch(`https://ezbracketapi.herokuapp.com/Bracket${path}`)
             .then(response => response.json())
             .then((store) => {
                 if (!store.error) {
@@ -45,11 +38,11 @@ class Tournaments extends Component {
                     this.props.BestOfRoundRobinAction(store.bestOfRoundRobin)
                     this.props.LinksAction(store.links)
                 } else {
-                    alert('Unable to find data')
+                    alert('Unable to find bracket, Sorry!')
                     this.props.history.push('/Info')
                 }
             })
-            .catch(() => alert('Sorry, something went wrong!'))
+            .catch(() => alert('Unable to find bracket, Sorry!'))
         }
     }
 
