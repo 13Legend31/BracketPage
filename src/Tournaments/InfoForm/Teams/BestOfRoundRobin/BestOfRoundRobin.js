@@ -1,37 +1,10 @@
-import React, { Component, PureComponent } from 'react'
-import { findDOMNode } from 'react-dom'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './BestOfRoundRobin.css'
 
 import { BestOfRoundRobinAction } from '../../../../Redux/Bracket/RoundRobin/BestOfRoundRobin'
 import { IsBracketUpToDateAction } from '../../../../Redux/Bracket/IsBracketUpToDate'
-
-class Input extends PureComponent {
-    onFocus = (input) => {
-        findDOMNode(this.refs[input]).value = ''
-    }
-
-    onBlur = (input, index) => {
-        findDOMNode(this.refs[input]).value = this.props.bestOf[index]
-        if (this.props.bestOf[index] === '') {
-            this.props.Modify(1, index)
-        }
-    }
-
-    render() {
-        const { index, value, Modify } = this.props
-        return (
-            <input
-                className='bestOfRoundRobinInput'
-                value={value}
-                onChange={(e) => Modify(e.target.value, index)}
-                ref={`bestOfRoundRobinInput${index}`}
-                onFocus={() => this.onFocus(`bestOfRoundRobinInput${index}`)}
-                onBlur={() => this.onBlur(`bestOfRoundRobinInput${index}` ,index)}
-            />
-        );
-    }
-}
+import Input from './Input/Input'
 
 class BestOfRoundRobin extends Component {
     Modify = (value, index) => {
