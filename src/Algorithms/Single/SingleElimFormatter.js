@@ -79,7 +79,8 @@ function SingleElimFormatter(teams, bestOfSingle) {
                     team2:,
                     team1Score:,
                     team2Score:,
-                    winner:''
+                    winner:'',
+                    num:#
                 },
                 {
                     ...

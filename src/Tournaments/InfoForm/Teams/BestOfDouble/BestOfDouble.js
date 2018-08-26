@@ -5,6 +5,7 @@ import './BestOfDouble.css'
 // double elim action
 import { BestOfDoubleAction } from '../../../../Redux/Bracket/Double/BestOfDouble'
 import { IsBracketUpToDateAction } from '../../../../Redux/Bracket/IsBracketUpToDate'
+import RoundsInLower from '../../../../Algorithms/Double/RoundsInLower'
 import Input from './Input/Input'
 
 class BestOfDouble extends Component {
@@ -44,8 +45,8 @@ class BestOfDouble extends Component {
             }
             shouldUpdate = true
         }
-        // lower - FIX THIS ALGORITHM
-        const lowerRounds = teamsList.length === 2 ? 0 : Math.ceil(Math.log(teamsList.length)/Math.log(2)) + 1
+        // lower
+        const lowerRounds = RoundsInLower(teamsList.length)
         const lowerBestOf = [...this.props.bestOf.lower]
         if (lowerRounds > lowerBestOf.length) {
             const roundsToAdd = lowerRounds - lowerBestOf.length

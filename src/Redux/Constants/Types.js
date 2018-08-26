@@ -11,6 +11,7 @@ const UPDATE_LINKS = 'links'
 const UPDATE_UPPER_BRACKET = 'upperBracket'
 const UPDATE_LOWER_BRACKET = 'lowerBracket'
 const UPDATE_BEST_OF_DOUBLE = 'bestOfDouble'
+const UPDATE_GRAND_FINALS = 'grandFinals'
 
 export {
     UPDATE_TOURNAMENT_NAME, 
@@ -25,5 +26,6 @@ export {
     UPDATE_LINKS,
     UPDATE_UPPER_BRACKET,
     UPDATE_LOWER_BRACKET,
-    UPDATE_BEST_OF_DOUBLE
+    UPDATE_BEST_OF_DOUBLE,
+    UPDATE_GRAND_FINALS
 }

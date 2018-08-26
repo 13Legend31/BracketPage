@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import './TheBracket.css'
 
 import SingleElimination from './Formats/SingleElimination/SingleElimination'
+import DoubleElimination from './Formats/DoubleElimination/DoubleElimination'
 import RoundRobin from './Formats/RoundRobin/RoundRobin'
 import Links from './Links/Links'
 
@@ -82,6 +83,9 @@ class TheBracket extends Component {
                         <div className='bracketLeftSpace'/>
                         {tournamentFormat === 'Single Elimination' &&
                             <SingleElimination/>
+                        }
+                        {tournamentFormat === 'Double Elimination' &&
+                            <DoubleElimination/>
                         }
                         {tournamentFormat === 'Round Robin' &&
                             <RoundRobin/>

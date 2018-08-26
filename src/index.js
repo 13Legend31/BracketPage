@@ -18,6 +18,7 @@ import { RoundRobinScoreBoardReducer } from './Redux/Bracket/RoundRobin/RoundRob
 import { BestOfRoundRobinReducer } from './Redux/Bracket/RoundRobin/BestOfRoundRobin'
 import { UpperBracketReducer } from './Redux/Bracket/Double/UpperBracket'
 import { LowerBracketReducer } from './Redux/Bracket/Double/LowerBracket'
+import { GrandFinalsReducer } from './Redux/Bracket/Double/GrandFinals'
 import { BestOfDoubleReducer } from './Redux/Bracket/Double/BestOfDouble'
 import { LinksReducer } from './Redux/Links/Links'
 
@@ -36,6 +37,7 @@ const allReducers = combineReducers({
     bestOfRoundRobin: BestOfRoundRobinReducer,
     upperBracket: UpperBracketReducer,
     lowerBracket: LowerBracketReducer,
+    grandFinals: GrandFinalsReducer,
     bestOfDouble: BestOfDoubleReducer,
     links: LinksReducer
 })
@@ -60,6 +62,7 @@ const store = createStore(
         bestOfRoundRobin:[],
         upperBracket:[],
         lowerBracket:[],
+        grandFinals:[],
         bestOfDouble: {
             upper:[],
             lower:[],

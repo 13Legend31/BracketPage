@@ -1,0 +1,15 @@
+.doubleElimination {
+    flex-shrink:0;
+    display:flex;
+    user-select:none;
+}
+.upperAndLower {
+    display:flex;
+    flex-direction: column;
+    width:90%;
+}
+.grandFinalsWrapper {
+    display:flex;
+    justify-content: center;
+    width:10%;
+}
