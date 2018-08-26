@@ -19,14 +19,11 @@ class RoundRobin extends Component {
     componentDidMount = () => {
         const { isBracketUpToDate, teams, bestOfRoundRobin, IsBracketUpToDate, UpdateData, UpdateScoreBoard } = this.props
         if (!isBracketUpToDate) {
-            RoundRobinFormatter(teams, bestOfRoundRobin)
-            .then(data => {
-                IsBracketUpToDate(true)
-                UpdateData(data)
-                const scoreBoard = MakeScoreBoard(teams)
-                UpdateScoreBoard(scoreBoard)
-            })
-            .catch(() => alert(`Sorry! Couldn't format round robin, please try again`))
+            const roundRobinData = RoundRobinFormatter(teams, bestOfRoundRobin)
+            IsBracketUpToDate(true)
+            UpdateData(roundRobinData)
+            const scoreBoard = MakeScoreBoard(teams)
+            UpdateScoreBoard(scoreBoard)
         }
     }
 

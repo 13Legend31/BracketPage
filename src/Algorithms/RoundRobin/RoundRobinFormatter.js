@@ -50,13 +50,7 @@ function RoundRobinFormatter(teams, bestOfRoundRobin) {
         teams.pop() 
     }
     
-    return new Promise((resolve, reject) => {
-        if (roundRobinData) {
-            resolve(roundRobinData)
-        } else {
-            reject()
-        }
-    })
+    return roundRobinData
 }
 
 /* 

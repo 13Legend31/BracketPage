@@ -12,12 +12,9 @@ class SingleElimination extends Component {
     componentDidMount = () => {
         const { isBracketUpToDate, teams, bestOfSingle, IsBracketUpToDate, UpdateData } = this.props
         if (!isBracketUpToDate) {
-            SingleElimFormatter(teams, bestOfSingle)
-            .then((data) => {
-                IsBracketUpToDate(true)
-                UpdateData(data)
-            })
-            .catch(() => alert('Sorry! Something went wrong, please try again'))
+            const singleElimData = SingleElimFormatter(teams, bestOfSingle)
+            IsBracketUpToDate(true)
+            UpdateData(singleElimData)
         }
     }
 

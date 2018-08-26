@@ -67,13 +67,7 @@ function SingleElimFormatter(teams, bestOfSingle) {
         }
     }
 
-    return new Promise((resolve, reject) => {
-        if (singleElimData) {
-            resolve(singleElimData)
-        } else {
-            reject()
-        }
-    })
+    return singleElimData
 }
 
 /* 
