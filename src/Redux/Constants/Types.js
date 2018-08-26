@@ -8,6 +8,9 @@ const UPDATE_ROUND_ROBIN_DATA = 'roundRobinData'
 const UPDATE_ROUND_ROBIN_SCOREBOARD = 'roundRobinScoreBoard'
 const UPDATE_BEST_OF_ROUND_ROBIN = 'bestOfRoundRobin'
 const UPDATE_LINKS = 'links'
+const UPDATE_UPPER_BRACKET = 'upperBracket'
+const UPDATE_LOWER_BRACKET = 'lowerBracket'
+const UPDATE_BEST_OF_DOUBLE = 'bestOfDouble'
 
 export {
     UPDATE_TOURNAMENT_NAME, 
@@ -19,5 +22,8 @@ export {
     UPDATE_ROUND_ROBIN_DATA, 
     UPDATE_ROUND_ROBIN_SCOREBOARD, 
     UPDATE_BEST_OF_ROUND_ROBIN,
-    UPDATE_LINKS
+    UPDATE_LINKS,
+    UPDATE_UPPER_BRACKET,
+    UPDATE_LOWER_BRACKET,
+    UPDATE_BEST_OF_DOUBLE
 }

@@ -1,0 +1,26 @@
+.bestOfDouble {
+    position:relative;
+    width:100%;
+    margin-top:25px;
+}
+.upperBracketBestOf {
+
+}
+.lowerBracketBestOf {
+
+}
+.bestOfDoubleName {
+    display:flex;
+    justify-content: flex-end;
+    color:white;
+    font-family:sans-serif;
+    margin-bottom:10px;
+}
+.bestOfDoubleHeader {
+    flex:5;
+    color:white;
+    font-size:16px;
+    font-family:sans-serif;
+    display:flex;
+    align-items:center;
+}
