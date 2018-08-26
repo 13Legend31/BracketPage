@@ -8,19 +8,20 @@ class Input extends PureComponent {
     }
 
     onBlur = (input, index) => {
-        findDOMNode(this.refs[input]).value = this.props.bestOf[index]
-        if (this.props.bestOf[index] === '') {
-            this.props.Modify(1, index)
+        const { bestOf, whichBracket } = this.props
+        findDOMNode(this.refs[input]).value = bestOf[whichBracket][index]
+        if (bestOf[whichBracket][index] === '') {
+            this.props.Modify(1, index, whichBracket)
         }
     }
 
     render() {
-        const { index, value, Modify } = this.props
+        const { index, value, whichBracket, Modify } = this.props
         return (
             <input
                 className='bestOfSingleInput'
                 value={value}
-                onChange={(e) => Modify(e.target.value, index)}
+                onChange={(e) => Modify(e.target.value, index, whichBracket)}
                 ref={`bestOfSingleInput${index}`}
                 onFocus={() => this.onFocus(`bestOfSingleInput${index}`)}
                 onBlur={() => this.onBlur(`bestOfSingleInput${index}` ,index)}

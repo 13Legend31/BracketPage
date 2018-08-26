@@ -62,7 +62,8 @@ const store = createStore(
         lowerBracket:[],
         bestOfDouble: {
             upper:[],
-            lower:[]
+            lower:[],
+            grandFinals:[1]
         },
         links: {
             view: '',

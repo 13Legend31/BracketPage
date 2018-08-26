@@ -8,7 +8,7 @@ import { IsBracketUpToDateAction } from '../../../../Redux/Bracket/IsBracketUpTo
 import Input from './Input/Input'
 
 class BestOfDouble extends Component {
-    Modify = (value, index) => {
+    Modify = (value, index, whichBracket) => {
         const isValueNumOrBlank = (value === '' || (typeof parseInt(value, 10) === 'number' && !isNaN(parseInt(value,10))))
         if (isValueNumOrBlank) {
             if (value !== '') {
@@ -16,8 +16,10 @@ class BestOfDouble extends Component {
                 value = value > 99 ? 99 : value
                 value = value < 1 ? 1 : value
             }
-            const bestOf = [...this.props.bestOf]
-            bestOf[index] = value
+            const bestOf = {...this.props.bestOf}
+            const bestOfBracket = [...bestOf[whichBracket]]
+            bestOfBracket[index] = value
+            bestOf[whichBracket] = bestOfBracket
             this.props.IsBracketUpToDate(false)
             this.props.UpdateBestOf(bestOf)
         }
@@ -25,21 +27,46 @@ class BestOfDouble extends Component {
 
     PushOrPopBestOf = () => {
         const { teamsList } = this.props.teams
+        let shouldUpdate = false
         // upper
         const upperRounds = Math.ceil(Math.log(teamsList.length)/Math.log(2))
         const upperBestOf = [...this.props.bestOf.upper]
         if (upperRounds > upperBestOf.length) {
-            const roundsToAdd = rounds - bestOf.length
+            const roundsToAdd = upperRounds - upperBestOf.length
             for (let i = 0; i < roundsToAdd; i++) {
-                bestOf.push(1)
+                upperBestOf.push(1)
             }
-        } else if (rounds < bestOf.length) {
-            const roundsToSubtract = bestOf.length - rounds
+            shouldUpdate = true
+        } else if (upperRounds < upperBestOf.length) {
+            const roundsToSubtract = upperBestOf.length - upperRounds
             for (let i = 0; i < roundsToSubtract; i++) {
-                bestOf.pop()
+                upperBestOf.pop()
             }
+            shouldUpdate = true
         }
-        // lower
+        // lower - FIX THIS ALGORITHM
+        const lowerRounds = teamsList.length === 2 ? 0 : Math.ceil(Math.log(teamsList.length)/Math.log(2)) + 1
+        const lowerBestOf = [...this.props.bestOf.lower]
+        if (lowerRounds > lowerBestOf.length) {
+            const roundsToAdd = lowerRounds - lowerBestOf.length
+            for (let i = 0; i < roundsToAdd; i++) {
+                lowerBestOf.push(1)
+            }
+            shouldUpdate = true
+        } else if (lowerRounds < lowerBestOf.length) {
+            const roundsToSubtract = lowerBestOf.length - lowerRounds
+            for (let i = 0; i < roundsToSubtract; i++) {
+                lowerBestOf.pop()
+            }
+            shouldUpdate = true
+        }
+        if (shouldUpdate) {
+            this.props.UpdateBestOf({
+                upper: upperBestOf,
+                lower: lowerBestOf,
+                grandFinals: this.props.bestOf.grandFinals
+            })
+        }
     }
 
     componentDidMount = () => {
@@ -47,13 +74,13 @@ class BestOfDouble extends Component {
     }
 
     componentDidUpdate = () => {
-        this.PushOrPopBestOf()
+        this.PushOrPopBestOf() // problem is here
     }
 
     render() {
         const { bestOf } = this.props
         const upperRounds = bestOf.upper.length
-        let bestOfUpper = [<div className='upperBracketBestOf'>Upper Bracket</div>]
+        let bestOfUpper = [<div className='bracketLabel' key={-1}>Upper Bracket</div>]
         bestOf.upper.forEach(( value, index ) => {
             let header = `Round ${index + 1}`
             header = index + 1 === upperRounds ? `Upper Bracket Finals` : header
@@ -65,11 +92,12 @@ class BestOfDouble extends Component {
                     <div className='bestOfDoubleHeader'>
                         {header}:
                         <Input
-                            key={index}
+                            key={index + 2}
                             index={index}
                             value={value}
                             Modify={this.Modify}
                             bestOf={bestOf}
+                            whichBracket={'upper'}
                         />
                     </div>
                 </div>
@@ -77,7 +105,7 @@ class BestOfDouble extends Component {
         })
         
         const lowerRounds = bestOf.lower.length
-        let bestOfLower = [<div className='lowerBracketBestOf'>Lower Bracket</div>]
+        let bestOfLower = [<div className='bracketLabel' key={-1}>Lower Bracket</div>]
         bestOf.lower.forEach(( value, index ) => {
             let header = `Round ${index + 1}`
             header = index + 1 === lowerRounds ? `Lower Bracket Finals` : header
@@ -89,11 +117,12 @@ class BestOfDouble extends Component {
                     <div className='bestOfDoubleHeader'>
                         {header}:
                         <Input
-                            key={index}
+                            key={index + 1}
                             index={index}
                             value={value}
                             Modify={this.Modify}
                             bestOf={bestOf}
+                            whichBracket={'lower'}
                         />
                     </div>
                 </div>
@@ -105,6 +134,17 @@ class BestOfDouble extends Component {
                 <h3 className='bestOfDoubleName'>Best of</h3>
                 {bestOfUpper}
                 {bestOfLower}
+                <div className='bracketLabel'>Grand Finals</div>
+                <div className='bestOfDoubleHeader'>
+                Grand Finals:
+                    <Input
+                        index={0}
+                        value={bestOf.grandFinals[0]}
+                        Modify={this.Modify}
+                        bestOf={bestOf}
+                        whichBracket={'grandFinals'}
+                    />
+                </div>
             </section>
         );
     }

@@ -5,6 +5,7 @@ import './Teams.css'
 import AddTeamsArea from './AddTeamsArea/AddTeamsArea'
 import BestOfSingle from './BestOfSingle/BestOfSingle'
 import BestOfRoundRobin from './BestOfRoundRobin/BestOfRoundRobin'
+import BestOfDouble from './BestOfDouble/BestOfDouble'
 
 class Teams extends Component {
     render() {
@@ -21,6 +22,9 @@ class Teams extends Component {
                     }
                     {tournamentFormat === 'Round Robin' &&
                         <BestOfRoundRobin/>
+                    }
+                    {tournamentFormat === 'Double Elimination' &&
+                        <BestOfDouble/>
                     }
                 </div>
             </section>
