@@ -20,6 +20,11 @@ const noNum = {
     width:'215px'
 }
 
+const noTeamFont = {
+    fontStyle: 'italic',
+    color: 'grey'
+}
+
 class TCard extends PureComponent {
     constructor(props) {
         super(props)
@@ -89,7 +94,12 @@ class TCard extends PureComponent {
             }
                 <section className='tCard'>
                     <div className='teamWrapper'>
-                        <div className='tCardTeam'>{team1 ? team1 : placeholderTop}</div>
+                        <div 
+                            className='tCardTeam'
+                            style={team1 ? null : noTeamFont}
+                        >
+                            {team1 ? team1 : placeholderTop}
+                        </div>
                         <input 
                             className='tCardScore'
                             value={team1Score}
@@ -101,7 +111,12 @@ class TCard extends PureComponent {
                         />
                     </div>
                     <div className='teamWrapper'>
-                        <div className='tCardTeam'>{team2 ? team2 : placeholderBottom}</div>
+                        <div 
+                            className='tCardTeam' 
+                            style={team2 ? null : noTeamFont}
+                        >
+                            {team2 ? team2 : placeholderBottom}
+                        </div>
                         <input 
                             className='tCardScore'
                             value={team2Score}

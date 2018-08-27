@@ -4,7 +4,7 @@ import './RoundOf.css'
 import TCard from './../TCard/TCard'
 
 function RoundOf(props) {
-    const { bestOf, round, TCardList, roundOfWrapperStyle, TCardWrapperStyle, shouldConnect, padding, header, UpdateScore } = props
+    const { bestOf, round, TCardList, roundOfWrapperStyle, TCardWrapperStyle, shouldConnect, padding, header, placeholderTop, placeholderBottom, UpdateScore } = props
 
     return (
         <div 
@@ -23,7 +23,9 @@ function RoundOf(props) {
                         position={index}
                         round={round}
                         team1={team1}
+                        placeholderTop={placeholderTop}
                         team2={team2}
+                        placeholderBottom={placeholderBottom}
                         team1Score={team1Score}
                         team2Score={team2Score}
                         bestOf={bestOf}

@@ -42,7 +42,9 @@ class RoundRobin extends Component {
     ModifyScoreBoardRow = (winner, loser, wasThereAWinner) => {
         let scoreBoard = [...this.props.roundRobinScoreBoard]
         let winnerInfo,
-            winnerIndex
+            winnerIndex,
+            loserInfo,
+            loserIndex
 
         for (let i = 0; i < scoreBoard.length; i++) {
             if (scoreBoard[i].name === winner) {
@@ -50,16 +52,30 @@ class RoundRobin extends Component {
                 winnerInfo.win = wasThereAWinner ? winnerInfo.win + 1 : winnerInfo.win - 1
                 winnerIndex = i
             } else if (scoreBoard[i].name === loser) {
-                scoreBoard[i].loss = wasThereAWinner ? scoreBoard[i].loss + 1 : scoreBoard[i].loss - 1 
+                loserInfo = {...scoreBoard[i]}
+                loserInfo.loss = wasThereAWinner ? scoreBoard[i].loss + 1 : scoreBoard[i].loss - 1 
+                loserIndex = i
             }
         }
 
         scoreBoard.splice(winnerIndex, 1)
+        loserIndex -= loserIndex < winnerIndex ? 0 : 1
+        scoreBoard.splice(loserIndex, 1)
+        // insert winner
         let i = 0
         while (i < scoreBoard.length && winnerInfo.win < scoreBoard[i].win) {
             i++
         }
+        while (i < scoreBoard.length && winnerInfo.win === scoreBoard[i].win && winnerInfo.loss > scoreBoard[i].loss) {
+            i++
+        }
         scoreBoard.splice(i, 0, winnerInfo)
+        // insert loser
+        let j = 0
+        while (j < scoreBoard.length && (loserInfo.win < scoreBoard[j].win || loserInfo.loss > scoreBoard[j].loss)) {
+            j++
+        }
+        scoreBoard.splice(j, 0, loserInfo)
         this.props.UpdateScoreBoard(scoreBoard)
     }
 

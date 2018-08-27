@@ -48,8 +48,8 @@ function SingleElimFormatter(teams, bestOfSingle) {
         TCard.team1 = secondRound[i]
         TCard.team2 = secondRound[i + 1]
         TCard.num = num
-        num++
         singleElimData[1].TCardList.push(TCard)
+        num++
     }
 
     // Round 3+
@@ -62,8 +62,8 @@ function SingleElimFormatter(teams, bestOfSingle) {
         for (let j = 0; j < teamsInNextRound; j+=2) {
             let TCard = {...info}
             TCard.num = num
-            num++
             singleElimData[i].TCardList.push(TCard)
+            num++
         }
     }
 
