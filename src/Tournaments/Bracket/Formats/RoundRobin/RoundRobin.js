@@ -7,9 +7,21 @@ import { RoundRobinDataAction } from '../../../../Redux/Bracket/RoundRobin/Round
 import { RoundRobinScoreBoardAction } from '../../../../Redux/Bracket/RoundRobin/RoundRobinScoreBoard'
 import RoundRobinFormatter from '../../../../Algorithms/RoundRobin/RoundRobinFormatter'
 import MakeScoreBoard from '../../../../Algorithms/RoundRobin/MakeScoreBoard'
-import RoundOf from './RoundOf/RoundOf'
+import RoundOf from '../../RoundOf/RoundOf'
 import Sections from './Sections/Sections'
 import ScoreBoard from './ScoreBoard/ScoreBoard'
+
+const TCardWrapperStyle = {
+    display:'flex',
+    flexDrection:'row',
+    width:'100%',
+    maxWidth:'200%',
+    flexWrap:'wrap'
+}
+
+const roundOfWrapperStyle = {
+    width:'1200px'
+}
 
 class RoundRobin extends Component {
     state = {
@@ -89,7 +101,11 @@ class RoundRobin extends Component {
             <RoundOf
                 key={index}
                 round={index + 1}
+                header={`Round ${index + 1}`}
                 TCardList={TCardList}
+                roundOfWrapperStyle={roundOfWrapperStyle}
+                TCardWrapperStyle={TCardWrapperStyle}
+                padding={10}
                 bestOf={bestOf}
                 UpdateScore={this.UpdateScore}
                 shouldConnect={false}
@@ -119,6 +135,8 @@ class RoundRobin extends Component {
                     <Sections
                         UpdateScore={this.UpdateScore}
                         end={data.length - 1}
+                        roundOfWrapperStyle={roundOfWrapperStyle}
+                        TCardWrapperStyle={TCardWrapperStyle}                        
                     />
                 }
             </section>

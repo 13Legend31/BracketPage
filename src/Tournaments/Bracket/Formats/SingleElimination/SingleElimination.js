@@ -6,7 +6,20 @@ import { IsBracketUpToDateAction } from '../../../../Redux/Bracket/IsBracketUpTo
 import { SingleEliminationDataAction } from '../../../../Redux/Bracket/Single/SingleEliminationData'
 import SingleElimFormatter from '../../../../Algorithms/Single/SingleElimFormatter'
 import WinnerRemover from '../../../../Algorithms/Single/WinnerRemover'
-import RoundOf from './RoundOf/RoundOf'
+/* import RoundOf from './RoundOf/RoundOf' */
+import RoundOf from '../../RoundOf/RoundOf'
+
+const TCardWrapperStyle = {
+    display:'flex',
+    flexDirection:'column'
+}
+
+const roundOfWrapperStyle = {
+    paddingTop:'80px',
+    display:'flex',
+    flexDirection:'column',
+    userSelect:'none'
+}
 
 class SingleElimination extends Component {
     componentDidMount = () => {
@@ -59,17 +72,33 @@ class SingleElimination extends Component {
         const teams = data.map(({TCardList}) => TCardList)
         return (
             <section className='singleElimination'>
-                {data.map(( { bestOf }, index ) =>
-                    <RoundOf
-                        key={index}
-                        round={index + 1}
-                        maxRounds={data.length}
-                        TCardList={teams[index]}
-                        bestOf={bestOf}
-                        UpdateScore={this.UpdateScore}
-                        shouldConnect={index !== data.length - 1}
-                    />
-                )}
+                {data.map(( { bestOf }, index ) => {
+                    let header = `Round ${index + 1}`
+                    const round = index + 1
+                    if (round === data.length) {
+                        header = `Grand Finals`
+                    } else if (round === data.length - 1) {
+                        header = 'Semi Finals'
+                    } else if (round === data.length - 2) {
+                        header = 'Quarter Finals'
+                    }
+
+                    return (
+                        <RoundOf
+                            key={index}
+                            round={round}
+                            maxRounds={data.length}
+                            TCardList={teams[index]}
+                            header={header}
+                            bestOf={bestOf}
+                            padding={70 * Math.pow(2, index - 1) - 25}
+                            TCardWrapperStyle={TCardWrapperStyle}
+                            roundOfWrapperStyle={roundOfWrapperStyle}
+                            UpdateScore={this.UpdateScore}
+                            shouldConnect={index !== data.length - 1}
+                        />
+                    )
+                })}
             </section>
         )
     }

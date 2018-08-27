@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Sections.css'
 
-import RoundOf from '../RoundOf/RoundOf'
+import RoundOf from '../../../RoundOf/RoundOf'
 
 class Sections extends Component {
     state = { 
@@ -20,7 +20,7 @@ class Sections extends Component {
     }
 
     render() {
-        const { UpdateScore } = this.props
+        const { UpdateScore, roundOfWrapperStyle, TCardWrapperStyle } = this.props
         const { bestOf, TCardList } = this.props.roundRobinData[this.state.index]
         return (
         <section className='roundRobinSections'>
@@ -30,8 +30,12 @@ class Sections extends Component {
             />
             <RoundOf
                 round={this.state.index + 1}
+                header={`Round ${this.state.index + 1}`}
                 TCardList={TCardList}
                 bestOf={bestOf}
+                padding={10}
+                roundOfWrapperStyle={roundOfWrapperStyle}
+                TCardWrapperStyle={TCardWrapperStyle}
                 UpdateScore={UpdateScore}
                 shouldConnect={false}
             />

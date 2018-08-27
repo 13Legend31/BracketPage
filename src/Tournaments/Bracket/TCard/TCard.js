@@ -64,7 +64,7 @@ class TCard extends PureComponent {
     }
 
     render() {
-        const { team1, team2, team1Score, team2Score, winner, bestOf, round, position, num, padding, shouldConnect } = this.props
+        const { team1, team2, team1Score, team2Score, winner, bestOf, round, position, num, padding, placeholderTop, placeholderBottom, shouldConnect } = this.props
         let horizontalStyle
         if (num && shouldConnect) {
             horizontalStyle = numConnected
@@ -89,7 +89,7 @@ class TCard extends PureComponent {
             }
                 <section className='tCard'>
                     <div className='teamWrapper'>
-                        <div className='tCardTeam'>{team1}</div>
+                        <div className='tCardTeam'>{team1 ? team1 : placeholderTop}</div>
                         <input 
                             className='tCardScore'
                             value={team1Score}
@@ -101,7 +101,7 @@ class TCard extends PureComponent {
                         />
                     </div>
                     <div className='teamWrapper'>
-                        <div className='tCardTeam'>{team2}</div>
+                        <div className='tCardTeam'>{team2 ? team2 : placeholderBottom}</div>
                         <input 
                             className='tCardScore'
                             value={team2Score}
