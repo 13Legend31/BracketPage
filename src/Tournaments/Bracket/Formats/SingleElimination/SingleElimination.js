@@ -16,6 +16,7 @@ class SingleElimination extends Component {
             IsBracketUpToDate(true)
             UpdateData(singleElimData)
         }
+        window.scrollTo(0,0)
     }
 
     AdvanceWinner = (round, position, data, winner) => {

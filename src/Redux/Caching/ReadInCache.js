@@ -6,9 +6,6 @@ import { BestOfSingleAction } from '../Bracket/Single/BestOfSingle'
 import { RoundRobinDataAction } from '../Bracket/RoundRobin/RoundRobinData'
 import { RoundRobinScoreBoardAction } from '../Bracket/RoundRobin/RoundRobinScoreBoard'
 import { BestOfRoundRobinAction } from '../Bracket/RoundRobin/BestOfRoundRobin'
-import { UpperBracketAction } from '../Bracket/Double/UpperBracket'
-import { LowerBracketAction } from '../Bracket/Double/LowerBracket'
-import { BestOfDoubleAction } from '../Bracket/Double/BestOfDouble'
 import { IsBracketUpToDateAction } from '../Bracket/IsBracketUpToDate'
 import { LinksAction } from '../Links/Links'
 
@@ -63,24 +60,6 @@ function ReadInCache(store) {
     if (isBracketUpToDate) {
         isBracketUpToDate = JSON.parse(isBracketUpToDate)
         store.dispatch(IsBracketUpToDateAction(isBracketUpToDate))
-    }
-
-    let upperBracket = sessionStorage.getItem('upperBracket')
-    if (upperBracket) {
-        upperBracket = JSON.parse(upperBracket)
-        store.dispatch(UpperBracketAction(upperBracket))
-    }
-
-    let lowerBracket = sessionStorage.getItem('lowerBracket')
-    if (lowerBracket) {
-        lowerBracket = JSON.parse(lowerBracket)
-        store.dispatch(LowerBracketAction(lowerBracket))
-    }
-    //bestOfDouble
-    let bestOfDouble = sessionStorage.getItem('bestOfDouble')
-    if (bestOfDouble) {
-        bestOfDouble = JSON.parse(bestOfDouble)
-        store.dispatch(BestOfDoubleAction(bestOfDouble))
     }
 
     let links = sessionStorage.getItem('links')

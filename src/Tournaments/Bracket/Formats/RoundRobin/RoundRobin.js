@@ -25,6 +25,7 @@ class RoundRobin extends Component {
             const scoreBoard = MakeScoreBoard(teams)
             UpdateScoreBoard(scoreBoard)
         }
+        window.scrollTo(0,0)
     }
 
     ModifyScoreBoardRow = (winner, loser, wasThereAWinner) => {

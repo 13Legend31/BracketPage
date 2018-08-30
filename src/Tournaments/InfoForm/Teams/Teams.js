@@ -5,7 +5,6 @@ import './Teams.css'
 import AddTeamsArea from './AddTeamsArea/AddTeamsArea'
 import BestOfSingle from './BestOfSingle/BestOfSingle'
 import BestOfRoundRobin from './BestOfRoundRobin/BestOfRoundRobin'
-import BestOfDouble from './BestOfDouble/BestOfDouble'
 
 class Teams extends Component {
     render() {
@@ -15,6 +14,8 @@ class Teams extends Component {
             <section className='teamsContainer'>
                 <div className='teamsLabel'>Teams:</div>
                 <div className='teamsWrapper'>
+                    <div className='teamInstructions'>New Team - Press Enter</div>
+                    <div className='teamInstructions'>Delete Team - Press Backspace on empty field</div>
                     <AddTeamsArea/>
                     <div className='teamsRemaining'>{remaining} Teams Remaining</div>
                     {tournamentFormat === 'Single Elimination' &&
@@ -22,9 +23,6 @@ class Teams extends Component {
                     }
                     {tournamentFormat === 'Round Robin' &&
                         <BestOfRoundRobin/>
-                    }
-                    {tournamentFormat === 'Double Elimination' &&
-                        <BestOfDouble/>
                     }
                 </div>
             </section>

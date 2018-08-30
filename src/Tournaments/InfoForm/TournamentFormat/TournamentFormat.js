@@ -20,7 +20,6 @@ class TournamentFormat extends Component {
                     onChange={this.UpdateFormat}
                 >
                     <option>Single Elimination</option>
-                    <option>Double Elimination</option>
                     <option>Round Robin</option>
                 </select>
             </div>

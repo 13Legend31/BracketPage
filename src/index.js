@@ -16,9 +16,6 @@ import { BestOfSingleReducer } from './Redux/Bracket/Single/BestOfSingle'
 import { RoundRobinDataReducer } from './Redux/Bracket/RoundRobin/RoundRobinData'
 import { RoundRobinScoreBoardReducer } from './Redux/Bracket/RoundRobin/RoundRobinScoreBoard'
 import { BestOfRoundRobinReducer } from './Redux/Bracket/RoundRobin/BestOfRoundRobin'
-import { UpperBracketReducer } from './Redux/Bracket/Double/UpperBracket'
-import { LowerBracketReducer } from './Redux/Bracket/Double/LowerBracket'
-import { BestOfDoubleReducer } from './Redux/Bracket/Double/BestOfDouble'
 import { LinksReducer } from './Redux/Links/Links'
 
 import ReadInCache from './Redux/Caching/ReadInCache'
@@ -34,9 +31,6 @@ const allReducers = combineReducers({
     roundRobinData: RoundRobinDataReducer,
     roundRobinScoreBoard: RoundRobinScoreBoardReducer,
     bestOfRoundRobin: BestOfRoundRobinReducer,
-    upperBracket: UpperBracketReducer,
-    lowerBracket: LowerBracketReducer,
-    bestOfDouble: BestOfDoubleReducer,
     links: LinksReducer
 })
 
@@ -58,13 +52,6 @@ const store = createStore(
         roundRobinData:[],
         roundRobinScoreBoard:[],
         bestOfRoundRobin:[],
-        upperBracket:[],
-        lowerBracket:[],
-        bestOfDouble: {
-            upper:[],
-            lower:[],
-            grandFinals:[1]
-        },
         links: {
             view: '',
             edit: ''
