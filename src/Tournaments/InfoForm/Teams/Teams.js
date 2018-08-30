@@ -14,8 +14,8 @@ class Teams extends Component {
             <section className='teamsContainer'>
                 <div className='teamsLabel'>Teams:</div>
                 <div className='teamsWrapper'>
-                    <div className='teamInstructions'>New Team - Press Enter</div>
-                    <div className='teamInstructions'>Delete Team - Press Backspace on empty field</div>
+                    <div className='teamInstructions'>New Team - Enter</div>
+                    <div className='teamInstructions'>Delete Team - Backspace on empty line</div>
                     <AddTeamsArea/>
                     <div className='teamsRemaining'>{remaining} Teams Remaining</div>
                     {tournamentFormat === 'Single Elimination' &&

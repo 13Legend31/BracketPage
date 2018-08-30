@@ -12,6 +12,7 @@
 }
 .bracketTournamentInfoWrapper {
     display:flex;
+    overflow-x:scroll
 }
 .nameAndFormat {
     display:flex;

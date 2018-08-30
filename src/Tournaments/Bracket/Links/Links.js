@@ -37,8 +37,18 @@ class Links extends Component {
         this.generate = document.getElementsByClassName('generateLinks')[0]
     }
 
-    Select = (e) => {
-        e.target.select()
+    Select = (containerid) => {
+        let range
+        if (document.selection) { // IE
+            range = document.body.createTextRange()
+            range.moveToElementText(document.getElementsByClassName(containerid)[0])
+            range.select()
+        } else if (window.getSelection) {
+            range = document.createRange()
+            range.selectNode(document.getElementsByClassName(containerid)[0])
+            window.getSelection().removeAllRanges()
+            window.getSelection().addRange(range)
+        }
     }
 
     render() {
@@ -48,12 +58,10 @@ class Links extends Component {
             {view &&
                 <div className='view'>
                     <div className='viewDescription'>View link</div>
-                    <input 
-                        className='viewLink' 
-                        value={view}
-                        readOnly={true}
-                        onClick={this.Select}
-                    />
+                    <div 
+                        className='viewLink'
+                        onClick={() => this.Select('viewLink')}
+                    >{view}</div>
                 </div>
             }
             {edit &&
@@ -61,12 +69,10 @@ class Links extends Component {
                     <div className='editDescription'>Edit Link:  
                         <span className='DONOTGIVETHISTOANYONE'>(BE CAREFUL SHARING THIS)</span>
                     </div>
-                    <input 
+                    <div 
                         className='editLink'
-                        value={edit}
-                        readOnly={true}
-                        onClick={this.Select}
-                    />
+                        onClick={() => this.Select('editLink')}
+                    >{edit}</div>
                 </div>
             }
                 <div 
