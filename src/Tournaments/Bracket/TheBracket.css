@@ -8,6 +8,7 @@
     cursor:move;
     overflow:hidden;
     user-select:none;
+    touch-action: none;
 }
 .bracketTournamentInfoWrapper {
     display:flex;

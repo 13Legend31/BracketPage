@@ -30,6 +30,7 @@ class TheBracket extends Component {
     }
 
     Drag = (e) => {
+        e.preventDefault()
         if (this.isMouseDown) {
             let scrollX, scrollY
             if (e.clientX && e.clientY) {
