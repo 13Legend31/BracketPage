@@ -66,6 +66,30 @@ class AddTeamsArea extends Component {
 
     componentDidUpdate = () => {
         this.inputs = document.getElementsByClassName('teamInput')
+        const teams = {...this.props.teams}
+        if (teams.reconstruct) {
+            // rebuild teamsNames
+            this.teamNames = {}
+            for (let i = 0; i < this.inputs.length; i++) {
+                const name = this.inputs[i].value
+                this.inputs[i].style.color = 'white'
+                if (!this.teamNames[name] && name !== '') {
+                    this.teamNames[name] = new Map()
+                }
+                if (name !== '') {
+                    this.teamNames[name].set(i, 1)
+                }
+            }
+            for (const name in this.teamNames) {
+                if (this.teamNames.hasOwnProperty(name) && this.teamNames[name].size > 1) {
+                    this.teamNames[name].forEach((val, key) => {
+                        this.inputs[key].style.color = 'orange'
+                    })
+                }
+            }
+            teams.reconstruct = false
+            this.props.UpdateTeams(teams)
+        }
     }
 
     UpdateTeamName = (index, name) => {

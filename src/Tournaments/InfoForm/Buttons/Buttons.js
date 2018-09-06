@@ -15,6 +15,7 @@ class Buttons extends Component {
     RandomizeTeams = () => {
         const teams = {...this.props.teams}
         RandomizeArray(teams.teamsList)
+        teams.reconstruct = true
         this.props.UpdateTeams(teams)
         this.props.IsBracketUpToDate(false)
     }
@@ -23,7 +24,7 @@ class Buttons extends Component {
         const teams = {...this.props.teams}
         teams.remaining = 254
         teams.teamsList=['','']
-        teams.emptyFields={'0': 1, '1': 1}
+        teams.reconstruct = true
         this.props.UpdateTeams(teams)
         this.props.IsBracketUpToDate(false)
     }

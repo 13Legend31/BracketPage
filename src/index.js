@@ -44,7 +44,8 @@ const store = createStore(
                 '',
                 ''
             ],
-            remaining:254
+            remaining:254,
+            reconstruct:false
         },
         isBracketUpToDate: false,
         singleEliminationData:[],
