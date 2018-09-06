@@ -146,13 +146,14 @@ class AddTeamsArea extends Component {
                         map.set(key, 1)
                     }
                 })
-                if (map.size > 1) {
-                    map.forEach((val, key) => {
-                        this.inputs[key].style.color = 'orange'
-                    })
-                }
-
                 this.teamNames[name] = map
+            }
+        }
+        for (let name in this.teamNames) {
+            if (this.teamNames.hasOwnProperty(name) && this.teamNames[name].size > 1) {
+                this.teamNames[name].forEach((val, key) => {
+                    this.inputs[key].style.color = 'orange'
+                })
             }
         }
     }
